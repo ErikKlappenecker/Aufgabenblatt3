@@ -1,0 +1,53 @@
+
+#include <iostream>
+using namespace std;
+
+bool ungerade (int exponent)
+{
+if (exponent%2!=0){
+    return (true);}
+   
+else {
+    return (false);
+    }
+     
+}
+
+int multsignal (){
+
+    cout<<"Weitere Multiplikation"<<endl;
+    return 0;
+}
+
+int quadrat (int result)
+{
+    return result*result;
+}
+
+int exponentation (int basis, int exponent)
+{
+    if (exponent==0){
+        return 1;
+    }
+    if (ungerade(exponent)==true) {
+        int result=exponentation(basis,exponent-1);
+        multsignal();
+        return result*basis;
+    }
+    else {
+        multsignal();
+        return quadrat(exponentation (basis, exponent/2));
+        
+    }
+}
+
+int main(){
+    int basis, exponent;
+    cout<<"Basis: ";
+    cin>>basis;
+    cout<<"Exponent: ";
+    cin>>exponent;
+    cout<<"Ungerade? "<<ungerade(exponent)<<endl;
+    cout<<"Ergebnis: "<<exponentation(basis,exponent)<<endl;
+    return 0;
+}
